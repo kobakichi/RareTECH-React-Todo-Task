@@ -1,6 +1,15 @@
+/**
+ * SearchTodo
+ * @package components
+ */
 import React from "react";
 
-const Search = (props) => {
+/**
+ * SearchTodo
+ * @param {*} props
+ * @returns
+ */
+export const SearchTodo = (props) => {
   return (
     <div className="task-area">
       <input
@@ -25,5 +34,3 @@ const Search = (props) => {
     </div>
   );
 };
-
-export default Search;

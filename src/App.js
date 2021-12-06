@@ -1,23 +1,24 @@
+/**
+ * App
+ * @package src
+ */
 import React, { useState } from "react";
+/* components */
+import { AddTodo } from "./components/AddTodo";
+import { TodoList } from "./components/TodoList";
+import { SearchTodo } from "./components/SearchTodo";
+/* constants */
+import { INIT_TODO_LIST } from "./constants/data";
+/* styles */
 import "./App.css";
-import Input from "./components/Input";
-import Title from "./components/Title";
-import Todolist from "./components/Todolist";
-import Search from "./components/Search";
 
-function App() {
-  // 最初のTodoリストの配列
-  const initialState = [
-    {
-      task: "Task1",
-    },
-    {
-      task: "Task2",
-    },
-  ];
-
+/**
+ * App
+ * @returns
+ */
+export const App = () => {
   // 上で定義した配列をuseStateでtodosに入れる
-  const [todos, setTodos] = useState(initialState);
+  const [todos, setTodos] = useState(INIT_TODO_LIST);
 
   // Searchコンポーネントで入力されたキーワードを保存するステート
   const [searchKeyword, setSearchKeyword] = useState("");
@@ -28,10 +29,10 @@ function App() {
 
   return (
     <div className="wrapper">
-      <Title title={"Todo List"} />
-      <Input todos={todos} setTodos={setTodos} />
-      <Search todos={todos} value={searchKeyword} onChange={handleSearch} />
-      <Todolist
+      <h1>Todo List</h1>
+      <AddTodo todos={todos} setTodos={setTodos} />
+      <SearchTodo todos={todos} value={searchKeyword} onChange={handleSearch} />
+      <TodoList
         todos={todos}
         setTodos={setTodos}
         searchKeyword={searchKeyword}
@@ -39,6 +40,4 @@ function App() {
       />
     </div>
   );
-}
-
-export default App;
+};

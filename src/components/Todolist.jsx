@@ -1,6 +1,15 @@
+/**
+ * TodoList
+ * @package components
+ */
 import React from "react";
 
-const TodoList = (props) => {
+/**
+ * TodoList
+ * @param {*} props
+ * @returns
+ */
+export const TodoList = (props) => {
   const handleRemoveTask = (index) => {
     const newTodos = (todos) =>
       [...todos].filter((todo, todoIndex) => todoIndex !== index);
@@ -51,5 +60,3 @@ const TodoList = (props) => {
     </div>
   );
 };
-
-export default TodoList;

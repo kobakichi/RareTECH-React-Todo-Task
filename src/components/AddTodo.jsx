@@ -1,6 +1,15 @@
+/**
+ * AddTodo
+ * @package components
+ */
 import React, { useState } from "react";
 
-const Input = (props) => {
+/**
+ * AddTodo
+ * @param {*} props
+ * @returns
+ */
+export const AddTodo = (props) => {
   // 入力した情報を保持するための変数task
   const [task, setTask] = useState("");
 
@@ -34,5 +43,3 @@ const Input = (props) => {
     </div>
   );
 };
-
-export default Input;
