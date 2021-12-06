@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/RareTECH-React-Todo-Task/static/css/main.b7e7ff37.chunk.css",
+    "main.js": "/RareTECH-React-Todo-Task/static/js/main.51a1e55f.chunk.js",
+    "main.js.map": "/RareTECH-React-Todo-Task/static/js/main.51a1e55f.chunk.js.map",
+    "runtime-main.js": "/RareTECH-React-Todo-Task/static/js/runtime-main.ef29a9ee.js",
+    "runtime-main.js.map": "/RareTECH-React-Todo-Task/static/js/runtime-main.ef29a9ee.js.map",
+    "static/js/2.8873897e.chunk.js": "/RareTECH-React-Todo-Task/static/js/2.8873897e.chunk.js",
+    "static/js/2.8873897e.chunk.js.map": "/RareTECH-React-Todo-Task/static/js/2.8873897e.chunk.js.map",
+    "static/js/3.67b5335f.chunk.js": "/RareTECH-React-Todo-Task/static/js/3.67b5335f.chunk.js",
+    "static/js/3.67b5335f.chunk.js.map": "/RareTECH-React-Todo-Task/static/js/3.67b5335f.chunk.js.map",
+    "index.html": "/RareTECH-React-Todo-Task/index.html",
+    "static/css/main.b7e7ff37.chunk.css.map": "/RareTECH-React-Todo-Task/static/css/main.b7e7ff37.chunk.css.map",
+    "static/js/2.8873897e.chunk.js.LICENSE.txt": "/RareTECH-React-Todo-Task/static/js/2.8873897e.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ef29a9ee.js",
+    "static/js/2.8873897e.chunk.js",
+    "static/css/main.b7e7ff37.chunk.css",
+    "static/js/main.51a1e55f.chunk.js"
+  ]
+}
