@@ -19,11 +19,12 @@ import "./App.css";
 export const App = () => {
   /* todoリストの初期値 */
   const [todos, setTodos] = useState(INIT_TODO_LIST);
-  // タスク追加用の入力値
   /* タスク追加用の入力値 */
   const [addInputValue, setAddInputValue] = useState("");
   /* todo 採番ID */
   const [uniqueId, setUniqueId] = React.useState(INIT_TODO_LIST_COUNT);
+  // Searchコンポーネントで入力されたキーワードを保存するステート
+  const [searchKeyword, setSearchKeyword] = useState("");
 
   /**
    * タスク追加用の入力値更新処理
@@ -60,7 +61,7 @@ export const App = () => {
         ...todos,
         {
           id: nextUniqueId,
-          task: addInputValue,
+          title: addInputValue,
         },
       ]);
       // 採番IDを更新
@@ -70,10 +71,43 @@ export const App = () => {
     }
   };
 
-  // Searchコンポーネントで入力されたキーワードを保存するステート
-  const [searchKeyword, setSearchKeyword] = useState("");
+  /**
+   * タスク削除処理
+   * @param {*} index
+   */
+  const handleRemoveTodo = (targetId, targetTitle) => {
+    if (window.confirm(`「${targetTitle}」のtodoを削除しますか？`)) {
+      // 削除するid以外のtodoリストを再編集
+      // filterを用いた方法
+      const newTodos = todos.filter((todo) => todo.id !== targetId);
+      // 削除するTodoの配列番号を取り出してspliceで削除する方法もある
+      // const newTodos = [...todoList];
+      // const deleteIndex = newTodos.findIndex((todo) => todo.id === targetId);
+      // newTodos.splice(deleteIndex, 1);
+      setTodos(newTodos);
+    }
+  };
 
-  const handleSearch = (event) => {
+  /**
+   * タスク編集処理
+   * @param {*} index
+   * @param {*} value
+   */
+  const handleOnEdit = (index, value) => {
+    const newTodos = todos.map((todo, todoIndex) => {
+      if (todoIndex === index) {
+        todo.task = value;
+      }
+      return todo;
+    });
+    setTodos(newTodos);
+  };
+
+  /**
+   * 検索キーワード更新処理
+   * @param {*} event
+   */
+  const handleChangeSearchKeyword = (event) => {
     setSearchKeyword(event.target.value);
   };
 
@@ -85,12 +119,16 @@ export const App = () => {
         handleChangeAddInputTodo={handleChangeAddInputTodo}
         handleAddTodo={handleAddTodo}
       />
-      <SearchTodo todos={todos} value={searchKeyword} onChange={handleSearch} />
+      <SearchTodo
+        todos={todos}
+        value={searchKeyword}
+        onChange={handleChangeSearchKeyword}
+      />
       <TodoList
         todos={todos}
-        setTodos={setTodos}
         searchKeyword={searchKeyword}
-        setSearchKeyword={setSearchKeyword}
+        handleRemoveTodo={handleRemoveTodo}
+        handleOnEdit={handleOnEdit}
       />
     </div>
   );

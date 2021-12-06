@@ -10,25 +10,13 @@ import React from "react";
  * @returns
  */
 export const TodoList = (props) => {
-  const handleRemoveTask = (index) => {
-    const newTodos = (todos) =>
-      [...todos].filter((todo, todoIndex) => todoIndex !== index);
-    props.setTodos(newTodos);
-  };
-
-  const handleOnEdit = (index, value) => {
-    const newTodos = props.todos.map((todo, todoIndex) => {
-      if (todoIndex === index) {
-        todo.task = value;
-      }
-      return todo;
-    });
-    props.setTodos(newTodos);
-  };
+  /* props */
+  const { handleRemoveTodo, handleOnEdit } = props;
 
   return (
     <div className="task-area">
       <ul className="todoList">
+        {/* TODO: 検索処理のこのやり方だと冗長なコードになるので、別の方法を考えてみてください。 */}
         {props.todos
           .filter((val) => {
             if (props.searchKeyword === "") {
@@ -44,14 +32,14 @@ export const TodoList = (props) => {
             return false;
           })
           .map((todo, index) => (
-            <li className="todo" key={index}>
+            <li className="todo" key={todo.id}>
               <input
                 type="text"
                 className="editForm"
-                value={todo.task}
+                value={todo.title}
                 onChange={(event) => handleOnEdit(index, event.target.value)}
               />
-              <span onClick={() => handleRemoveTask(index)}>
+              <span onClick={() => handleRemoveTodo(todo.id, todo.title)}>
                 <i className="far fa-trash-alt"></i>
               </span>
             </li>

@@ -9,11 +9,11 @@
 export const INIT_TODO_LIST = [
   {
     id: 1,
-    task: "Task1",
+    title: "Task1",
   },
   {
     id: 2,
-    task: "Task2",
+    title: "Task2",
   },
 ];
 

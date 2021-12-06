@@ -10,13 +10,17 @@ import React from "react";
  * @returns
  */
 export const SearchTodo = (props) => {
+  /* props */
+  const { searchKeyword, handleChangeSearchKeyword } = props;
+
   return (
     <div className="task-area">
       <input
         type="text"
         className="inputArea"
         placeholder="Search Keyword"
-        onChange={props.onChange}
+        value={searchKeyword}
+        onChange={handleChangeSearchKeyword}
       />
 
       {/* { props.todos.filter((val) => {
