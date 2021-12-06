@@ -2,7 +2,7 @@
  * AddTodo
  * @package components
  */
-import React, { useState } from "react";
+import React from "react";
 
 /**
  * AddTodo
@@ -10,36 +10,28 @@ import React, { useState } from "react";
  * @returns
  */
 export const AddTodo = (props) => {
-  // 入力した情報を保持するための変数task
-  const [task, setTask] = useState("");
-
-  //onSubmitで発火する関数　handleSubmit todosの中身を展開して、taskに追加する
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    if (task === "") return;
-    props.setTodos((todos) => [...todos, { task }]);
-    setTask("");
-  };
-
-  // onChangeイベントで発火する関数　event.target.valueでinputに入力した値が取得できる
-  const handleNewTask = (event) => {
-    setTask(event.target.value);
-  };
+  /* props */
+  const { addInputValue, handleChangeAddInputTodo, handleAddTodo } = props;
 
   return (
     <div>
       <h2>ADD TASK</h2>
       {/* inputタグに入力した値を取得するonChangeイベント　onChangeイベントで実行する関数はhandleNewTask */}
       {/* エンターを押したらタスクを一覧にして表示するhandleSubmit */}
-      <form onSubmit={handleSubmit} className="task-area">
+
+      {/* formタグでsubmitはおすすめされない */}
+      {/* https://document.intra-mart.jp/library/iap/public/im_ui/im_design_guideline_pc/texts/contents_area/submit.html */}
+
+      <div className="task-area">
         <input
-          value={task}
-          className="inputArea"
-          placeholder="New Task"
           type="text"
-          onChange={handleNewTask}
+          className="inputArea"
+          value={addInputValue}
+          placeholder="New Task"
+          onChange={handleChangeAddInputTodo}
+          onKeyDown={handleAddTodo}
         />
-      </form>
+      </div>
     </div>
   );
 };
