@@ -1,40 +1,50 @@
-import React from 'react'
+/**
+ * TodoList
+ * @package components
+ */
+import React from "react";
 
-const Todolist = (props) => {
-
-  const handleRemoveTask = index => {
-    const newTodos = ( todos => [...todos].filter((todo,todoIndex) => todoIndex !== index));
-    props.setTodos(newTodos)
-  }
-
-  const handleOnEdit = (index, value) => {
-    const newTodos = props.todos.map((todo, todoindex) => {
-      if (todoindex === index) {
-        todo.task = value;
-      }
-      return todo;
-    });
-    props.setTodos(newTodos);
-  }
+/**
+ * TodoList
+ * @param {*} props
+ * @returns
+ */
+export const TodoList = (props) => {
+  /* props */
+  const { handleRemoveTodo, handleOnEdit } = props;
 
   return (
     <div className="task-area">
-      <ul className="todolist">
-        { props.todos.filter((val) => {
-          if (props.searchKeyword === '') {
-            return val;
-          } else if (
-            val.task.toString().toLowerCase().includes(props.searchKeyword.toString().toLowerCase())
-          ) {
-            return val;
-          } return false;
-        }).map((todo, index) => (
-          <li className="todo" key={ index }><input type="text" className="editForm" value={todo.task} onChange={(event) => handleOnEdit(index, event.target.value)} />
-          <span onClick={() => handleRemoveTask(index) }><i className="far fa-trash-alt"></i></span></li>
-        ))}
+      <ul className="todoList">
+        {/* TODO: 検索処理のこのやり方だと冗長なコードになるので、別の方法を考えてみてください。 */}
+        {props.todos
+          .filter((val) => {
+            if (props.searchKeyword === "") {
+              return val;
+            } else if (
+              val.task
+                .toString()
+                .toLowerCase()
+                .includes(props.searchKeyword.toString().toLowerCase())
+            ) {
+              return val;
+            }
+            return false;
+          })
+          .map((todo, index) => (
+            <li className="todo" key={todo.id}>
+              <input
+                type="text"
+                className="editForm"
+                value={todo.title}
+                onChange={(event) => handleOnEdit(index, event.target.value)}
+              />
+              <span onClick={() => handleRemoveTodo(todo.id, todo.title)}>
+                <i className="far fa-trash-alt"></i>
+              </span>
+            </li>
+          ))}
       </ul>
     </div>
   );
 };
-
-export default Todolist
