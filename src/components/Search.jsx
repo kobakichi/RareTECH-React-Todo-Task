@@ -1,10 +1,14 @@
-import React from 'react'
+import React from "react";
 
 const Search = (props) => {
-
   return (
     <div className="task-area">
-      <input type="text" className="inputArea" placeholder="Search Keyword" onChange={ props.onChange }/>
+      <input
+        type="text"
+        className="inputArea"
+        placeholder="Search Keyword"
+        onChange={props.onChange}
+      />
 
       {/* { props.todos.filter((val) => {
         if (search === "") {
@@ -19,7 +23,7 @@ const Search = (props) => {
           <span onClick={() => handleRemoveTask(index) }><i className="far fa-trash-alt fa-pull-right"></i></span></li>
         ))} */}
     </div>
-  )
-}
+  );
+};
 
-export default Search
+export default Search;
