@@ -1,48 +1,44 @@
+/**
+ * TodoList
+ * @package components
+ */
 import React from "react";
 
-const Todolist = (props) => {
-  const handleRemoveTask = (index) => {
-    const newTodos = (todos) =>
-      [...todos].filter((todo, todoIndex) => todoIndex !== index);
-    props.setTodos(newTodos);
-  };
-
-  const handleOnEdit = (index, value) => {
-    const newTodos = props.todos.map((todo, todoindex) => {
-      if (todoindex === index) {
-        todo.task = value;
-      }
-      return todo;
-    });
-    props.setTodos(newTodos);
-  };
+/**
+ * TodoList
+ * @param {*} props
+ * @returns
+ */
+export const Todolist = (props) => {
+  //props
+  const { todos, searchKeyword, handleRemoveTodo, handleOnEdit } = props;
 
   return (
     <div className="task-area">
       <ul className="todolist">
-        {props.todos
+        {todos
           .filter((val) => {
-            if (props.searchKeyword === "") {
+            if (searchKeyword === "") {
               return val;
             } else if (
-              val.task
+              val.title
                 .toString()
                 .toLowerCase()
-                .includes(props.searchKeyword.toString().toLowerCase())
+                .includes(searchKeyword.toString().toLowerCase())
             ) {
               return val;
             }
             return false;
           })
           .map((todo, index) => (
-            <li className="todo" key={index}>
+            <li className="todo" key={todo.id}>
               <input
                 type="text"
                 className="editForm"
-                value={todo.task}
+                value={todo.title}
                 onChange={(event) => handleOnEdit(index, event.target.value)}
               />
-              <span onClick={() => handleRemoveTask(index)}>
+              <span onClick={() => handleRemoveTodo(todo.id, todo.title)}>
                 <i className="far fa-trash-alt"></i>
               </span>
             </li>
@@ -51,5 +47,3 @@ const Todolist = (props) => {
     </div>
   );
 };
-
-export default Todolist;

@@ -1,13 +1,25 @@
+/**
+ * SearchTodo
+ * @package components
+ */
 import React from "react";
 
-const Search = (props) => {
+/**
+ * SearchTodo
+ * @param {*} props
+ * @returns
+ */
+export const SearchTodo = (props) => {
+  const { searchKeyword, handleChangeSearchKeyword } = props;
+
   return (
     <div className="task-area">
       <input
         type="text"
         className="inputArea"
         placeholder="Search Keyword"
-        onChange={props.onChange}
+        value={searchKeyword}
+        onChange={handleChangeSearchKeyword}
       />
 
       {/* { props.todos.filter((val) => {
@@ -25,5 +37,3 @@ const Search = (props) => {
     </div>
   );
 };
-
-export default Search;
