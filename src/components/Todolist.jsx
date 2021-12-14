@@ -11,38 +11,24 @@ import React from "react";
  */
 export const Todolist = (props) => {
   //props
-  const { todos, searchKeyword, handleRemoveTodo, handleOnEdit } = props;
+  const { filteredList, handleRemoveTodo, handleOnEdit } = props;
 
   return (
     <div className="task-area">
       <ul className="todolist">
-        {todos
-          .filter((val) => {
-            if (searchKeyword === "") {
-              return val;
-            } else if (
-              val.title
-                .toString()
-                .toLowerCase()
-                .includes(searchKeyword.toString().toLowerCase())
-            ) {
-              return val;
-            }
-            return false;
-          })
-          .map((todo, index) => (
-            <li className="todo" key={todo.id}>
-              <input
-                type="text"
-                className="editForm"
-                value={todo.title}
-                onChange={(event) => handleOnEdit(index, event.target.value)}
-              />
-              <span onClick={() => handleRemoveTodo(todo.id, todo.title)}>
-                <i className="far fa-trash-alt"></i>
-              </span>
-            </li>
-          ))}
+        {filteredList.map((todo, index) => (
+          <li className="todo" key={todo.id}>
+            <input
+              type="text"
+              className="editForm"
+              value={todo.title}
+              onChange={(event) => handleOnEdit(index, event.target.value)}
+            />
+            <span onClick={() => handleRemoveTodo(todo.id, todo.title)}>
+              <i className="far fa-trash-alt"></i>
+            </span>
+          </li>
+        ))}
       </ul>
     </div>
   );
