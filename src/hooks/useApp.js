@@ -100,7 +100,11 @@ export const useApp = () => {
     }
     return false;
   });
-
+  /**
+   * hooksの返り値
+   * 第一引数、state
+   * 第二引数、関数、変数
+   */
   return [
     {
       todos,
