@@ -28,6 +28,7 @@ describe("【Hooksテスト】", () => {
       expect(result.current[0].addInputValue).toBe(expectedValue);
     });
   });
+
   describe("【関数テスト】handleAddTodo", () => {
     //予測値
     let expectTodoList = [];
@@ -56,7 +57,7 @@ describe("【Hooksテスト】", () => {
 
     test("【正常系】handleAddTodoでリストにtodoが追加されること", () => {
       //予測値
-      const expectTodoTitle = "Todo3";
+      const expectTodoTitle = "Task3";
       expectTodoList = INIT_TODO_LIST.concat({
         id: 3,
         title: expectTodoTitle,
@@ -77,8 +78,97 @@ describe("【Hooksテスト】", () => {
       //入力値(addInputValue)がリセットされたこと
       expect(result.current[0].addInputValue).toBe("");
     });
+    //ここから次のテスト内容へ切り替え
+    test("【正常系】エンターキーを押していない場合、処理が発生しないこと", () => {
+      //予測値
+      const expectTodoTitle = "Task4";
+      expectTodoList = INIT_TODO_LIST.concat({
+        id: 3,
+        title: expectTodoTitle,
+      });
+      //引数
+      eventObject.target.value = expectTodoTitle;
+      eventObject.key = "";
+      //hooks呼び出し
+      const { result } = renderHook(() => useApp());
+      expect(result.current[0].addInputValue).toBe("");
+      //hooks関数の実行(addInputValueを更新する、入力値を受け取る処理)
+      act(() => result.current[1].handleChangeAddInputTodo(eventObject));
+      expect(result.current[0].addInputValue).toBe(expectTodoTitle);
+      //hooks関数の実行: handleAddTodoの実行でTodoリストへ追加
+      act(() => result.current[1].handleAddTodo(eventObject));
+      //TodoListが予測値どうりに更新されない
+      expect(result.current[0].todos).not.toEqual(expectTodoList);
+      //入力値(addInputValue)がリセットされない、空にならない
+      expect(result.current[0].addInputValue).not.toBe("");
+    });
+    //ここから次のテスト内容へ切り替え
+    test("【正常系】入力値がない場合、処理が発生しないこと", () => {
+      //予測値
+      const expectTodoTitle = "Task5";
+      expectTodoList = INIT_TODO_LIST.concat({
+        id: 3,
+        title: expectTodoTitle,
+      });
+      //引数
+      eventObject.target.value = "";
+      eventObject.key = "";
+      //hooks呼び出し
+      const { result } = renderHook(() => useApp());
+      expect(result.current[0].addInputValue).toBe("");
+      //hooks関数の実行(addInputValueを更新、入力値を受け取る)
+      act(() => result.current[1].handleChangeAddInputTodo(eventObject));
+      expect(result.current[0].addInputValue).toBe("");
+      //hooks関数の実行(handleAddTodoの実行、Todoリストへ追加の処理)
+      act(() => result.current[1].handleAddTodo(eventObject));
+      //TodoListが予測値どうに更新されない
+      expect(result.current[0].todos).not.toEqual(expectTodoList);
+    });
   });
-  describe("【関数テスト】handleRemoveTodo", () => {});
+
+  describe("【関数テスト】handleRemoveTodo", () => {
+    //予測値
+    let expectTodoList = [];
+
+    beforeEach(() => {
+      //予測値を初期化
+      expectTodoList = [];
+    });
+
+    test("【正常系】todoが削除されること", () => {
+      //引数
+      const targetId = 1;
+      const targetTitle = "テスト";
+      //window.confirmをモック化
+      //confirmでOKをクリックした場合true
+      window.confirm = jest.fn().mockReturnValueOnce(true);
+      //予測値
+      expectTodoList = INIT_TODO_LIST.filter((todo) => todo.id !== targetId);
+      //hooks呼び出し
+      const { result } = renderHook(() => useApp());
+      //handleRemoveTodoの実行
+      act(() => result.current[1].handleRemoveTodo(targetId, targetTitle));
+      //設定したIDのTodoが削除されている事
+      expect(result.current[0].todos).toEqual(expectTodoList);
+    });
+    test("【正常系】confirmでキャンセルをクリックした場合、todoが削除される事", () => {
+      //引数
+      const targetId = 1;
+      const targetTitle = "テスト";
+      //window.confirmをモック化
+      //confirmでキャンセルをクリックした場合
+      window.confirm = jest.fn().mockReturnValueOnce(false);
+      //予測値
+      expectTodoList = INIT_TODO_LIST;
+      //hooks呼び出し
+      const { result } = renderHook(() => useApp());
+      //handleRemoveTodoの実行
+      act(() => result.current[1].handleRemoveTodo(targetId, targetTitle));
+      //Todoの削除処理が実行されない事
+      expect(result.current[0].todos).toEqual(expectTodoList);
+    });
+  });
+
   describe("【関数テスト】handleOnEdit", () => {});
   describe("【関数テスト】handleChangeSearchKeyword", () => {});
 });
