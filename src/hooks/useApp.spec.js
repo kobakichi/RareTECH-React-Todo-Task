@@ -5,7 +5,7 @@ import { renderHook, act } from "@testing-library/react-hooks";
 /* hooks */
 import { useApp } from "./useApp";
 /* constants */
-import { INIT_TODO_LIST, INIT_TODO_LIST_COUNT } from "../constants/data";
+import { INIT_TODO_LIST } from "../constants/data";
 
 describe("【Hooksテスト】", () => {
   describe("【関数テスト】handleChangeAddInputTodo", () => {
@@ -121,7 +121,7 @@ describe("【Hooksテスト】", () => {
       expect(result.current[0].addInputValue).toBe("");
       //hooks関数の実行(handleAddTodoの実行、Todoリストへ追加の処理)
       act(() => result.current[1].handleAddTodo(eventObject));
-      //TodoListが予測値どうに更新されない
+      //TodoListが予測値どうりに更新されない
       expect(result.current[0].todos).not.toEqual(expectTodoList);
     });
   });
@@ -169,6 +169,58 @@ describe("【Hooksテスト】", () => {
     });
   });
 
-  describe("【関数テスト】handleOnEdit", () => {});
-  describe("【関数テスト】handleChangeSearchKeyword", () => {});
+  describe("【関数テスト】handleOnEdit", () => {
+    test("【正常系】TodoListの中身を編集できること", () => {
+      //引数
+      const index = 0;
+      const expectValue = "タスク編集";
+      //予測値
+      const expectTodoList = INIT_TODO_LIST;
+      //hooks呼び出し
+      const { result } = renderHook(() => useApp());
+      //handleOnEditの実行
+      act(() => result.current[1].handleOnEdit(index, expectValue));
+      //Todoのindex0番目の値が編集されていること
+      expect(result.current[0].todos).toEqual(expectTodoList);
+    });
+  });
+
+  describe("【関数テスト】handleChangeSearchKeyword", () => {
+    test("【正常系】検索キーワードがある場合、検索された結果が表示される", () => {
+      //予測値
+      const expectValue = [INIT_TODO_LIST[0]];
+      //引数
+      const eventObject = {
+        target: {
+          value: "タスク編集",
+        },
+      };
+      //mock
+      jest.fn().mockReturnValue(INIT_TODO_LIST[0]);
+
+      //hooks呼び出し
+      const { result } = renderHook(() => useApp());
+      //handleChangeSearchKeyword関数の実行　検索キーワード保持
+      act(() => result.current[1].handleChangeSearchKeyword(eventObject));
+      //結果が返ってくるか
+      expect(result.current[1].filteredList).toEqual(expectValue);
+    });
+
+    test("【正常系】検索キーワードがない場合、元のTodoリストが表示される", () => {
+      const expectValue = INIT_TODO_LIST;
+      //引数
+      const eventObject = {
+        target: {
+          value: "",
+        },
+      };
+
+      //hooks呼び出し
+      const { result } = renderHook(() => useApp());
+      //hooks関数の実行
+      act(() => result.current[1].handleChangeSearchKeyword(eventObject));
+      //結果を判定
+      expect(result.current[1].filteredList).toEqual(expectValue);
+    });
+  });
 });
