@@ -23,7 +23,7 @@ export const AddTodo = (props) => {
           value={addInputValue}
           placeholder="New Task"
           onChange={handleChangeAddInputTodo}
-          onKeyDown={handleAddTodo}
+          onKeyPress={handleAddTodo}
         />
       </div>
     </div>
