@@ -2,7 +2,7 @@ body {
   text-align: center;
   font-family: "Big Caslon", Times, Garamond, "Century Gothic",
     "Libre Baskerville", serif;
-  background: black;
+  background: fixed;
   color: white;
   background-image: url(./moon.jpg);
   background-position: 50% 30%;
