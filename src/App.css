@@ -1,8 +1,11 @@
 body {
   text-align: center;
-  font-family: "Times New Roman", Times, sans-serif;
-  background: rgb(0, 128, 128);
+  font-family: "Big Caslon", Times, Garamond, "Century Gothic",
+    "Libre Baskerville", serif;
+  background: black;
   color: white;
+  background-image: url(./moon.jpg);
+  background-position: 50% 30%;
 }
 
 .wrapper {
@@ -12,6 +15,13 @@ body {
 
 h1 {
   font-size: 40px;
+  color: rgb(182, 157, 117);
+  font-weight: 100;
+}
+
+h2 {
+  color: rgb(182, 157, 117);
+  font-weight: 100;
 }
 
 ul {
@@ -19,7 +29,7 @@ ul {
 }
 
 input {
-  background-color: rgb(5, 102, 103);
+  background-color: rgb(110, 100, 82);
   border: none;
   padding: 8px;
   line-height: 40px;
@@ -27,7 +37,8 @@ input {
   width: 100%;
   border-radius: 5px;
   color: white;
-  font-family: "Times New Roman", Times, serif;
+  font-family: "Big Caslon", "Hiragino Mincho ProN", Times, Garamond,
+    "Century Gothic", "Libre Baskerville", serif;
   font-size: 20px;
   box-sizing: border-box;
 }
@@ -39,6 +50,11 @@ input {
 
 .inputArea::placeholder {
   color: rgb(192, 192, 192);
+}
+
+.inputArea:hover {
+  opacity: 0.7;
+  transition: 0.7s;
 }
 
 .todolist {
@@ -54,13 +70,20 @@ input {
 /* Todoリストのみの高さの指定 */
 .editForm {
   height: 60px;
+  margin-top: 15px;
+}
+
+.editForm:hover {
+  opacity: 0.7;
+  transition: 0.7s;
+  color: red;
 }
 
 /* アイコンのポジション微調整 */
 .far {
   position: absolute;
-  color: yellow;
-  top: 20px;
+  color: red;
+  top: 35px;
   right: 20px;
   cursor: pointer;
 }
