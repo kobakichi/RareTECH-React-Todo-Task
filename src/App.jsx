@@ -23,7 +23,7 @@ export const App = () => {
 
   return (
     <div className="wrapper">
-      <h1>Todo List</h1>
+      <h1>Rare List</h1>
       <AddTodo
         addInputValue={states.addInputValue}
         handleChangeAddInputTodo={actions.handleChangeAddInputTodo}
