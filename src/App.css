@@ -2,14 +2,16 @@ body {
   text-align: center;
   font-family: "Big Caslon", Times, Garamond, "Century Gothic",
     "Libre Baskerville", serif;
-  background: fixed;
+  /* background: fixed; */
   color: white;
   background-image: url(./moon.jpg);
-  background-position: 50% 30%;
+  background-position: 55% 40%;
+  animation: fadeIn 4s ease 0s 1 normal;
+  -webkit-animation: fadeIn 4s ease 0s 1 normal;
 }
 
 .wrapper {
-  width: 40%;
+  width: 50%;
   margin: 80px auto;
 }
 
@@ -86,4 +88,37 @@ input {
   top: 35px;
   right: 20px;
   cursor: pointer;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/*旧 Safari 用のベンダー処理*/
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 959px) {
+  /* 959px以下に適用されるCSS（タブレット用） */
+  .wrapper {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  /* 480px以下に適用されるCSS（スマホ用） */
+  .wrapper {
+    width: 80%;
+  }
 }
