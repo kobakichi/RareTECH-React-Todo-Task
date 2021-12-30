@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/RareTECH-React-Todo-Task/static/css/main.5acef5db.chunk.css",
-    "main.js": "/RareTECH-React-Todo-Task/static/js/main.0017228c.chunk.js",
-    "main.js.map": "/RareTECH-React-Todo-Task/static/js/main.0017228c.chunk.js.map",
+    "main.css": "/RareTECH-React-Todo-Task/static/css/main.5848e566.chunk.css",
+    "main.js": "/RareTECH-React-Todo-Task/static/js/main.f3f177cb.chunk.js",
+    "main.js.map": "/RareTECH-React-Todo-Task/static/js/main.f3f177cb.chunk.js.map",
     "runtime-main.js": "/RareTECH-React-Todo-Task/static/js/runtime-main.ef29a9ee.js",
     "runtime-main.js.map": "/RareTECH-React-Todo-Task/static/js/runtime-main.ef29a9ee.js.map",
     "static/js/2.c530099a.chunk.js": "/RareTECH-React-Todo-Task/static/js/2.c530099a.chunk.js",
@@ -10,13 +10,14 @@
     "static/js/3.67b5335f.chunk.js": "/RareTECH-React-Todo-Task/static/js/3.67b5335f.chunk.js",
     "static/js/3.67b5335f.chunk.js.map": "/RareTECH-React-Todo-Task/static/js/3.67b5335f.chunk.js.map",
     "index.html": "/RareTECH-React-Todo-Task/index.html",
-    "static/css/main.5acef5db.chunk.css.map": "/RareTECH-React-Todo-Task/static/css/main.5acef5db.chunk.css.map",
-    "static/js/2.c530099a.chunk.js.LICENSE.txt": "/RareTECH-React-Todo-Task/static/js/2.c530099a.chunk.js.LICENSE.txt"
+    "static/css/main.5848e566.chunk.css.map": "/RareTECH-React-Todo-Task/static/css/main.5848e566.chunk.css.map",
+    "static/js/2.c530099a.chunk.js.LICENSE.txt": "/RareTECH-React-Todo-Task/static/js/2.c530099a.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/RareTECH-React-Todo-Task/static/media/moon.7688a796.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.ef29a9ee.js",
     "static/js/2.c530099a.chunk.js",
-    "static/css/main.5acef5db.chunk.css",
-    "static/js/main.0017228c.chunk.js"
+    "static/css/main.5848e566.chunk.css",
+    "static/js/main.f3f177cb.chunk.js"
   ]
 }
