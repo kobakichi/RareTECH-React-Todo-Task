@@ -1,7 +1,7 @@
 body {
   text-align: center;
-  font-family: "Big Caslon", Times, Garamond, "Century Gothic",
-    "Libre Baskerville", serif;
+  font-family: "Libre Caslon Text", Times, Garamond, "Century Gothic",
+    "Libre Baskerville", "Sawarabi Mincho", sans-serif;
   /* background: fixed; */
   color: white;
   background-image: url(./moon.jpg);
@@ -39,8 +39,8 @@ input {
   width: 100%;
   border-radius: 5px;
   color: white;
-  font-family: "Big Caslon", "Hiragino Mincho ProN", Times, Garamond,
-    "Century Gothic", "Libre Baskerville", serif;
+  font-family: "Libre Caslon Text", Times, Garamond, "Century Gothic",
+    "Libre Baskerville", "Sawarabi Mincho", sans-serif;
   font-size: 20px;
   box-sizing: border-box;
 }
