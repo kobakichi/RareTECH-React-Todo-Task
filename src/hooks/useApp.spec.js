@@ -177,17 +177,19 @@ describe("【Hooksテスト】", () => {
   describe("【関数テスト】handleOnEdit", () => {
     test("【正常系】TodoListの中身を編集できること", () => {
       //引数
-      const index = 0;
+      const targetId = 1;
       const expectValue = "タスク編集";
       //予測値
       const expectTodoList = INIT_TODO_LIST;
       //hooks呼び出し
       const { result } = renderHook(() => useApp());
       //handleOnEditの実行
-      act(() => result.current[1].handleOnEdit(index, expectValue));
-      //Todoのindex0番目の値が編集されていること
+      act(() => result.current[1].handleOnEdit(targetId, expectValue));
+      //Todoのid:1の値が編集されていること
       expect(result.current[0].todos).toEqual(expectTodoList);
     });
+    // TODO: 追加テスト
+    test("【正常系】検索した状態でTodoリストを編集できること", () => {});
   });
 
   describe("【関数テスト】handleChangeSearchKeyword", () => {
