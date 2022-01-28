@@ -9,7 +9,7 @@ import React from "react";
  * @param {*} props
  * @returns
  */
-export const Todolist = (props) => {
+export const TodoList = (props) => {
   //props
   const { filteredList, handleRemoveTodo, handleOnEdit } = props;
 

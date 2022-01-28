@@ -124,6 +124,9 @@ describe("【Hooksテスト】", () => {
       //TodoListが予測値どうりに更新されない
       expect(result.current[0].todos).not.toEqual(expectTodoList);
     });
+
+    // TODO: 追加テスト
+    test("【正常系】検索した状態でTodoリストを追加できること", () => {});
   });
 
   describe("【関数テスト】handleRemoveTodo", () => {
@@ -167,6 +170,8 @@ describe("【Hooksテスト】", () => {
       //Todoの削除処理が実行されない事
       expect(result.current[0].todos).toEqual(expectTodoList);
     });
+    // TODO: 追加テスト
+    test("【正常系】検索した状態でTodoリストを削除できること", () => {});
   });
 
   describe("【関数テスト】handleOnEdit", () => {
@@ -203,7 +208,7 @@ describe("【Hooksテスト】", () => {
       //handleChangeSearchKeyword関数の実行　検索キーワード保持
       act(() => result.current[1].handleChangeSearchKeyword(eventObject));
       //結果が返ってくるか
-      expect(result.current[1].filteredList).toEqual(expectValue);
+      expect(result.current[0].filteredList).toEqual(expectValue);
     });
 
     test("【正常系】検索キーワードがない場合、元のTodoリストが表示される", () => {
@@ -220,7 +225,7 @@ describe("【Hooksテスト】", () => {
       //hooks関数の実行
       act(() => result.current[1].handleChangeSearchKeyword(eventObject));
       //結果を判定
-      expect(result.current[1].filteredList).toEqual(expectValue);
+      expect(result.current[0].filteredList).toEqual(expectValue);
     });
   });
 });

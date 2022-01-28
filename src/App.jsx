@@ -6,7 +6,7 @@
 import React from "react";
 /** components */
 import { AddTodo } from "./components/AddTodo";
-import { Todolist } from "./components/Todolist";
+import { TodoList } from "./components/Todolist";
 import { SearchTodo } from "./components/SearchTodo";
 /* hooks */
 import { useApp } from "./hooks/useApp";
@@ -34,10 +34,10 @@ export const App = () => {
         value={states.searchKeyword}
         handleChangeSearchKeyword={actions.handleChangeSearchKeyword}
       />
-      <Todolist
+      <TodoList
         todos={states.todos}
         searchKeyword={states.searchKeyword}
-        filteredList={actions.filteredList}
+        filteredList={states.filteredList}
         handleRemoveTodo={actions.handleRemoveTodo}
         handleOnEdit={actions.handleOnEdit}
       />
