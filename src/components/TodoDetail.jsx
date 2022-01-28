@@ -52,8 +52,8 @@ export const TodoDetail = (props) => {
 
   return (
     <li className="todo" key={todo.id}>
-      {editFlg ? (
-        <div>
+      <div onClick={onChangeEditMode}>
+        {editFlg ? (
           <input
             type="text"
             className="editForm"
@@ -62,17 +62,15 @@ export const TodoDetail = (props) => {
             onKeyPress={onKeyUpDecideEditTodo}
             onBlur={onBlurDecideEditTodo}
           />
-        </div>
-      ) : (
-        <div onClick={onChangeEditMode}>
+        ) : (
           <input
             disabled
             type="text"
             className="detailForm"
             value={todo.title}
           />
-        </div>
-      )}
+        )}
+      </div>
 
       <span onClick={() => handleRemoveTodo(todo.id, todo.title)}>
         <i className="far fa-trash-alt"></i>
