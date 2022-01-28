@@ -27,15 +27,15 @@ export const TodoDetail = (props) => {
    * 編集用input value変更処理
    * @param {*} editTitle
    */
-  const onChangeEditTodo = (editTitle) => {
-    setEditInputValue(editTitle);
+  const onChangeEditInputValue = (event) => {
+    setEditInputValue(event.target.value);
   };
 
   /**
    * タスク編集処理 (Enterをクリックした際に発火)
    * @param {*} event
    */
-  const onDecideEditTodo = (event) => {
+  const onKeyUpDecideEditTodo = (event) => {
     if (event.key === "Enter") {
       handleOnEdit(todo.id, editInputValue);
       setEditFlg(false);
@@ -58,8 +58,8 @@ export const TodoDetail = (props) => {
             type="text"
             className="editForm"
             value={editInputValue}
-            onChange={(event) => onChangeEditTodo(event.target.value)}
-            onKeyPress={onDecideEditTodo}
+            onChange={onChangeEditInputValue}
+            onKeyPress={onKeyUpDecideEditTodo}
             onBlur={onBlurDecideEditTodo}
           />
         </div>
