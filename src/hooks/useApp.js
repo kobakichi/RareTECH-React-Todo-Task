@@ -18,6 +18,20 @@ export const useApp = () => {
   const [uniqueId, setUniqueId] = useState(INIT_TODO_LIST_COUNT);
   // Searchコンポーネントで入力されたキーワードを保存するステート
   const [searchKeyword, setSearchKeyword] = useState("");
+  // 検索後のTodoリスト
+  const filteredList = todos.filter((val) => {
+    if (searchKeyword === "") {
+      return val;
+    } else if (
+      val.title
+        .toString()
+        .toLowerCase()
+        .startsWith(searchKeyword.toString().toLowerCase())
+    ) {
+      return val;
+    }
+    return false;
+  });
 
   /**
    *タスクが入力されたらデータを保持する処理、更新処理
@@ -63,12 +77,12 @@ export const useApp = () => {
 
   /**
    * タスク編集処理
-   * @param {*} index
+   * @param {*} targetId
    * @param {*} value
    */
-  const handleOnEdit = (index, value) => {
-    const newTodos = todos.map((todo, todoIndex) => {
-      if (todoIndex === index) {
+  const handleOnEdit = (targetId, value) => {
+    const newTodos = todos.map((todo) => {
+      if (todo.id === targetId) {
         todo.title = value;
       }
       return todo;
@@ -85,22 +99,6 @@ export const useApp = () => {
   };
 
   /**
-   * 検索キーワードフィルター処理
-   */
-  const filteredList = todos.filter((val) => {
-    if (searchKeyword === "") {
-      return val;
-    } else if (
-      val.title
-        .toString()
-        .toLowerCase()
-        .startsWith(searchKeyword.toString().toLowerCase())
-    ) {
-      return val;
-    }
-    return false;
-  });
-  /**
    * hooksの返り値
    * 第一引数、state
    * 第二引数、関数、変数
@@ -110,6 +108,7 @@ export const useApp = () => {
       todos,
       addInputValue,
       searchKeyword,
+      filteredList,
     },
     {
       handleChangeAddInputTodo,
@@ -117,7 +116,6 @@ export const useApp = () => {
       handleRemoveTodo,
       handleOnEdit,
       handleChangeSearchKeyword,
-      filteredList,
     },
   ];
 };
