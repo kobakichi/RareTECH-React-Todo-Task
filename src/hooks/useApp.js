@@ -63,12 +63,12 @@ export const useApp = () => {
 
   /**
    * タスク編集処理
-   * @param {*} index
+   * @param {*} targetId
    * @param {*} value
    */
-  const handleOnEdit = (index, value) => {
-    const newTodos = todos.map((todo, todoIndex) => {
-      if (todoIndex === index) {
+  const handleOnEdit = (targetId, value) => {
+    const newTodos = todos.map((todo) => {
+      if (todo.id === targetId) {
         todo.title = value;
       }
       return todo;

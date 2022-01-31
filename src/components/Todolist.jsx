@@ -16,13 +16,13 @@ export const Todolist = (props) => {
   return (
     <div className="task-area">
       <ul className="todolist">
-        {filteredList.map((todo, index) => (
+        {filteredList.map((todo) => (
           <li className="todo" key={todo.id}>
             <input
               type="text"
               className="editForm"
               value={todo.title}
-              onChange={(event) => handleOnEdit(index, event.target.value)}
+              onChange={(event) => handleOnEdit(todo.id, event.target.value)}
             />
             <span onClick={() => handleRemoveTodo(todo.id, todo.title)}>
               <i className="far fa-trash-alt"></i>
