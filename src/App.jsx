@@ -37,7 +37,7 @@ export const App = () => {
       <TodoList
         todos={states.todos}
         searchKeyword={states.searchKeyword}
-        filteredList={actions.filteredList}
+        filteredList={states.filteredList}
         handleRemoveTodo={actions.handleRemoveTodo}
         handleOnEdit={actions.handleOnEdit}
       />

@@ -1,5 +1,6 @@
 /**
  * useApp
+ * カスタムフック
  */
 import { useState } from "react";
 /* constants */
@@ -86,17 +87,18 @@ export const useApp = () => {
 
   /**
    * 検索キーワードフィルター処理
+   * これは関数ではなく、状態
    */
-  const filteredList = todos.filter((val) => {
+  const filteredList = todos.filter((value) => {
     if (searchKeyword === "") {
-      return val;
+      return value;
     } else if (
-      val.title
+      value.title
         .toString()
         .toLowerCase()
         .startsWith(searchKeyword.toString().toLowerCase())
     ) {
-      return val;
+      return value;
     }
     return false;
   });
@@ -110,6 +112,7 @@ export const useApp = () => {
       todos,
       addInputValue,
       searchKeyword,
+      filteredList,
     },
     {
       handleChangeAddInputTodo,
@@ -117,7 +120,6 @@ export const useApp = () => {
       handleRemoveTodo,
       handleOnEdit,
       handleChangeSearchKeyword,
-      filteredList,
     },
   ];
 };
