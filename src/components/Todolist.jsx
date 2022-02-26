@@ -3,12 +3,15 @@
  * @package components
  */
 import React from "react";
+/* components */
+import { TodoDetail } from "./TodoDetail";
 
 /**
  * TodoList
  * @param {*} props
  * @returns
  */
+
 export const TodoList = (props) => {
   //props
   const { filteredList, handleRemoveTodo, handleOnEdit } = props;
@@ -17,17 +20,12 @@ export const TodoList = (props) => {
     <div className="task-area">
       <ul className="todolist">
         {filteredList.map((todo) => (
-          <li className="todo" key={todo.id}>
-            <input
-              type="text"
-              className="editForm"
-              value={todo.title}
-              onChange={(event) => handleOnEdit(todo.id, event.target.value)}
-            />
-            <span onClick={() => handleRemoveTodo(todo.id, todo.title)}>
-              <i className="far fa-trash-alt"></i>
-            </span>
-          </li>
+          <TodoDetail
+            key={todo.id}
+            todo={todo}
+            handleOnEdit={handleOnEdit}
+            handleRemoveTodo={handleRemoveTodo}
+          />
         ))}
       </ul>
     </div>
